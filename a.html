@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makanan khas Indonesia</title>
+    <center><h1>Makanan Khas Indonesia</h1></center>
+    <style>
+        body {
+        background-color :white;
+        animation-name: rgb;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        }
+        @keyframes rgb {
+        0% {background-color: rgb(194, 194, 194);}
+        25% {background-color: rgb(167, 255, 207);}
+        50% {background-color: rgb(108, 213, 254);}
+        75% {background-color: rgb(254, 155, 155);}
+        100% {background-color: rgb(212, 160, 255);}
+      }
+        .menu-item {
+            background-color: rgb(255, 247, 235);
+            border: 1px solid #000000;
+            margin: 10px;
+            padding: 10px;
+            display: inline-block;
+        }
+        #cart {
+            background-color: rgb(255, 250, 238);
+            border: 1px solid #000000;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu-item">
+        <img src="nasi goreng.jpg" height="150" width="200">
+        <h3>Nasi Goreng</h3>
+        <p>Nasi goreng adalah makanan berupa nasi yang digoreng dan dicampur dalam minyak goreng, margarin, atau mentega. Biasanya ditambah dengan kecap manis, bawang merah, bawang putih, asam jawa, lada dan bahan lainnya; seperti telur, daging ayam, dan kerupuk.</p>
+        <p>Harga: 20000</p>
+        <input type="number" id="menu1Quantity" value="0">
+        <button onclick="addToCart('Nasi Goreng', 20000, 'menu1Quantity')">Add to Cart</button>
+    </div>
+
+    <div class="menu-item">
+        <img src="nasi sambal matah.jpeg" height="150" width="200">
+        <h3>Nasi Sambal Matah</h3>
+        <p>Rasanya pedas, asam dan menyegarkan. Dengan munculnya sambal matah pada berbagai jenis makanan kini siapapun akan ketagihan mencobanya. Olahan ikan, ayam, daging juga sayur menjadikan sambal matah sebagai pelengkap yang siap memanjakan lidah.</p>
+        <p>Harga: 25000</p>
+        <input type="number" id="menu2Quantity" value="0">
+        <button onclick="addToCart('Nasi Sambal Matah', 25000, 'menu2Quantity')">Add to Cart</button>
+    </div>
+
+    <div class="menu-item">
+        <img src="Boba.jpg" height="150" width="200">
+        <h3>Brown Sugar Milk</h3>
+        <p>Teh susu mutiara atau lebih sering disebut boba adalah sejenis minuman teh susu ditambah dengan "mutiara" yang terbuat dari tapioka. Minuman ini berasal dari Taiwan, dan terkenal di Tiongkok, Korea, Filipina, Indonesia, dan juga Eropa, Kanada, dan Amerika Serikat.</p>
+        <p>Harga: 12000</p>
+        <input type="number" id="menu3Quantity" value="0">
+        <button onclick="addToCart('Brown Sugar Milk', 12000, 'menu3Quantity')">Add to Cart</button>
+    </div>
+
+    <div class="menu-item">
+        <img src="soda gembira.jpg" height="200" width="200">
+        <h3>Soda Gembira</h3>
+        <p>Soda gembira adalah minuman yang terbuat dari soda, susu kental manis, sirop, dan es batu. Minuman ini sangat cocok di hidangkan di kala cuaca sedang panas. </p>
+        <p>Harga: 15000</p>
+        <input type="number" id="menu4Quantity" value="0">
+        <button onclick="addToCart('Soda Gembira', 15000, 'menu4Quantity')">Add to Cart</button>
+    </div>
+
+    <div id="cart">
+        <h2>Cart</h2>
+        <ul id="cart-items">
+        </ul>
+        <p>Total Harga: <span id="totalPrice">0</span></p>
+        <button onclick="placeOrder()">Place Order</button>
+    </div>
+
+    <script>
+        let cartItems = [];
+
+        function addToCart(menuName, menuPrice, quantityInputId) {
+            const quantity = parseInt(document.getElementById(quantityInputId).value);
+            if (quantity > 0) {
+                const item = { name: menuName, price: menuPrice, quantity };
+                cartItems.push(item);
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            const cartList = document.getElementById("cart-items");
+            const totalPriceElement = document.getElementById("totalPrice");
+            let totalPrice = 0;
+
+            cartList.innerHTML = "";
+
+            cartItems.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${item.name} x ${item.quantity} = ${item.price * item.quantity}`;
+                cartList.appendChild(listItem);
+                totalPrice += item.price * item.quantity;
+            });
+
+            totalPriceElement.textContent = `${totalPrice}`;
+        }
+
+        function placeOrder() {
+            alert("Total harga: "+ document.getElementById("totalPrice").textContent);
+            cartItems = [];
+            updateCart();
+        }
+    </script>
+</body>
+</html>

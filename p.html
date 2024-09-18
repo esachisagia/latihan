@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Media Queries</title>
+<style>
+body {
+    display: flex;
+    flex-direction: column;
+}
+@media (max-width: 480px) {
+    .mycontainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
+.mycontainer {
+  display: flex;
+}
+#header {
+    background-color: orange;
+    text-align: center;
+}
+#footer {
+    background-color: darkgreen;
+    text-align: center;
+}
+#satu {
+    background-color: yellow;
+    flex-grow: 1;
+}
+#dua {
+    background-color: tomato;
+    flex-grow: 2;
+}
+#tiga {
+    background-color: aqua;
+    flex-grow: 1;
+}
+.kotak {
+    border: solid black 1px;
+    margin: 3px;
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+    <div id="header" class="kotak"><h1>Title Here</h1></div>
+    <div class="mycontainer">
+        <div id="satu" class="kotak">1. first sentence. this is left side</div>
+        <div id="dua" class="kotak">2. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam corrupti amet commodi. Quae voluptate soluta beatae, ullam ducimus, ab praesentium reiciendis provident laboriosam libero mollitia et illum ex labore accusamus? second sentence. this sentence is big again. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam corrupti amet commodi. Quae voluptate soluta beatae, ullam ducimus, ab praesentium reiciendis provident laboriosam libero mollitia et illum ex labore accusamus? second sentence. this sentence is big again. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam corrupti amet commodi. Quae voluptate soluta beatae, ullam ducimus, ab praesentium reiciendis provident laboriosam libero mollitia et illum ex labore accusamus? second sentence. this sentence is big again. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam corrupti amet commodi. Quae voluptate soluta beatae, ullam ducimus, ab praesentium reiciendis provident laboriosam libero mollitia et illum ex labore accusamus? second sentence. this sentence is big again. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam corrupti amet commodi. Quae voluptate soluta beatae, ullam ducimus, ab praesentium reiciendis provident laboriosam libero mollitia et illum ex labore accusamus? second sentence. this sentence is big again. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam corrupti amet commodi. Quae voluptate soluta beatae, ullam ducimus, ab praesentium reiciendis provident laboriosam libero mollitia et illum ex labore accusamus? second sentence. this sentence is big again</div>
+        <div id="tiga" class="kotak">3. third sentence. this is right side</div>
+    </div>
+    <div id="footer" class="kotak">&copy;2023</div>      
+</body>
+</html>

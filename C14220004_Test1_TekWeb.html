@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Restaurant</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+
+    <style>
+        body {
+            background-color: red;
+        }
+        .logoTitle {
+            display: flex;
+            flex-direction: column;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            align-items: center;
+            animation-name: toBig;
+            animation-duration: 5s;
+        }
+        #welcome {
+            margin-top: 40px;
+        }
+        @keyframes toBig {
+            0% {transform: scale(0);}
+            100% {transform: scale(1);}
+        }
+        .menu {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .box {
+            margin: 20px;
+        }
+        #burger {
+            width: 400px;
+            height: 300px;
+            background-color: white;
+            transition-duration: 2s;
+        }
+        #action {
+            background-color: yellow;
+            width: 400px;
+            height: 70px;
+            display: flex;
+            flex-direction: row;
+        }
+        #cartBtn {
+            width: 50px;
+            height: 50px;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+        #addCart {
+            width: 25px;
+            height: 25px;
+        }
+        .desc {
+            display: flex;
+            flex-direction: column;
+            width: 240px;
+            height: 70px;
+        }
+        h3 {
+            margin-left: 15px;
+        }
+        h6 {
+            margin-left: 16px;
+        }
+        #qtyA, #qtyB, #qtyC, #qtyD, #qtyE, #qtyF, #qtyG, #qtyH, #qtyI, #qtyJ, #qtyK {
+            margin-top: 15px;
+            margin-left: 50px;
+            margin-right: 20px;
+            width: 50px;
+            height: 40px;
+        }
+        #qtyAC, #qtyBC, #qtyCC, #qtyDC, #qtyEC, #qtyFC, #qtyGC, #qtyHC, #qtyIC, #qtyJC, #qtyKC {
+            margin-top: 15px;
+            margin-left: 50px;
+            margin-right: 20px;
+            width: 50px;
+            height: 40px;
+        }
+        #burger:hover {
+            transform: scale(1.2);
+            border-radius: 50%;
+        }
+        .checkout {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        h2 {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .cart {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        #place {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+        h4 {
+            margin-left: 40px;
+        }
+        .boxOrder {
+            margin: 20px;
+        }
+    </style>
+
+    <script>
+        var qtyA;
+        var qtyB;
+        var qtyC;
+        var qtyD;
+        var qtyE;
+        var qtyF;
+        var qtyG;
+        var qtyH;
+        var qtyI;
+        var qtyJ;
+        var qtyK;
+        var total = 0;
+
+        function changeBtnA() {
+                total = total - (qtyA * 50000);
+                qtyA = $("#qtyAC").val();
+                total = total + (qtyA * 50000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnB() {
+                total = total - (qtyB * 30000);
+                qtyB = $("#qtyBC").val();
+                total = total + (qtyB * 30000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnC() {
+                total = total - (qtyC * 35000);
+                qtyC = $("#qtyCC").val();
+                total = total + (qtyC * 35000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnD() {
+                total = total - (qtyD * 20000);
+                qtyD = $("#qtyDC").val();
+                total = total + (qtyD * 20000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnE() {
+                total = total - (qtyE * 15000);
+                qtyE = $("#qtyEC").val();
+                total = total + (qtyE * 15000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnF() {
+                total = total - (qtyF * 45000);
+                qtyF = $("#qtyFC").val();
+                total = total + (qtyF * 45000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnG() {
+                total = total - (qtyG * 15000);
+                qtyG = $("#qtyGC").val();
+                total = total + (qtyG * 15000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnH() {
+                total = total - (qtyH * 30000);
+                qtyH = $("#qtyHC").val();
+                total = total + (qtyH * 30000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnI() {
+                total = total - (qtyI * 10000);
+                qtyI = $("#qtyIC").val();
+                total = total + (qtyI * 10000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnJ() {
+                total = total - (qtyJ * 11000);
+                qtyJ = $("#qtyJC").val();
+                total = total + (qtyJ * 11000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+        function changeBtnK() {
+                total = total - (qtyK * 20000);
+                qtyK = $("#qtyKC").val();
+                total = total + (qtyK * 20000);
+                $("#totalPrice").html("Total : Rp. " + String(total));
+        }
+
+        $(document).ready(function() {
+            $("#cartBtnA").on("click", function() {
+                qtyA = $("#qtyA").val();
+                total = total + (qtyA * 50000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://images.tokopedia.net/img/JFrBQq/2022/8/30/83e544e8-8229-4e0b-91db-618123c8f6f3.jpg'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>Big Mac</h3>" +
+                                "<h6>Rp. 50.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyAC' type='number' min='0' placeholder='qty' value='" + qtyA + "'>" +
+                        "<button onClick='changeBtnA()' id='changeBtnA' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyA").remove();
+                $("#cartBtnA").remove();
+                $("#qtyA").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnB").on("click", function() {
+                qtyB = $("#qtyB").val();
+                total = total + (qtyB * 30000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://nos.jkt-1.neo.id/mcdonalds/foods/September2023/Iq1HcIA50W5kyR36Tv34.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>Chicken Burger</h3>" +
+                                "<h6>Rp. 30.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyBC' type='number' min='0' placeholder='qty' value='" + qtyB + "'>" +
+                        "<button onClick='changeBtnB()' id='changeBtnB' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyB").remove();
+                $("#cartBtnB").remove();
+                $("#qtyB").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnC").on("click", function() {
+                qtyC = $("#qtyC").val();
+                total = total + (qtyC * 35000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://nos.jkt-1.neo.id/mcdonalds/foods/September2023/WlNlna8nt5YHgJDcpfmy.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>Fish O'Fillet</h3>" +
+                                "<h6>Rp. 35.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyCC' type='number' min='0' placeholder='qty' value='" + qtyC + "'>" +
+                        "<button onClick='changeBtnC()' id='changeBtnC' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyC").remove();
+                $("#cartBtnC").remove();
+                $("#qtyC").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnD").on("click", function() {
+                qtyD = $("#qtyD").val();
+                total = total + (qtyD * 20000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://nos.jkt-1.neo.id/mcdonalds/foods/October2019/N6lms2s2I8EeH6Iq4uAi.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>French Fries</h3>" +
+                                "<h6>Rp. 20.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyDC' type='number' min='0' placeholder='qty' value='" + qtyD + "'>" +
+                        "<button onClick='changeBtnD()' id='changeBtnD' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyD").remove();
+                $("#cartBtnD").remove();
+                $("#qtyD").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnE").on("click", function() {
+                qtyE = $("#qtyE").val();
+                total = total + (qtyE * 15000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://mcdonalds.com.pk/wp-content/uploads/2022/08/014-2pcs-BIC.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>Crispy Chicken</h3>" +
+                                "<h6>Rp. 15.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyEC' type='number' min='0' placeholder='qty' value='" + qtyE + "'>" +
+                        "<button onClick='changeBtnE()' id='changeBtnE' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyE").remove();
+                $("#cartBtnE").remove();
+                $("#qtyE").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnF").on("click", function() {
+                qtyF = $("#qtyF").val();
+                total = total + (qtyF * 45000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://www.nicepng.com/png/detail/70-707969_chicken-nuggets.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>McNuggets</h3>" +
+                                "<h6>Rp. 45.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyFC' type='number' min='0' placeholder='qty' value='" + qtyF + "'>" +
+                        "<button onClick='changeBtnF()' id='changeBtnF' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyF").remove();
+                $("#cartBtnF").remove();
+                $("#qtyF").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnG").on("click", function() {
+                qtyG = $("#qtyG").val();
+                total = total + (qtyG * 15000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://nos.jkt-1.neo.id/mcdonalds/foods/August2019/6VJ2ueCTa01TMyXxBfVo.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>McD Porridge</h3>" +
+                                "<h6>Rp. 15.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyGC' type='number' min='0' placeholder='qty' value='" + qtyG + "'>" +
+                        "<button onClick='changeBtnG()' id='changeBtnG' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyG").remove();
+                $("#cartBtnG").remove();
+                $("#qtyG").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnH").on("click", function() {
+                qtyH = $("#qtyH").val();
+                total = total + (qtyH * 30000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://nos.jkt-1.neo.id/mcdonalds/foods/November2020/cEBOioihY1Ps4oMcC8cq.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>Happy Meal</h3>" +
+                                "<h6>Rp. 30.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyHC' type='number' min='0' placeholder='qty' value='" + qtyH + "'>" +
+                        "<button onClick='changeBtnH()' id='changeBtnH' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyH").remove();
+                $("#cartBtnH").remove();
+                $("#qtyH").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnI").on("click", function() {
+                qtyI = $("#qtyI").val();
+                total = total + (qtyI * 10000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://nos.jkt-1.neo.id/mcdonalds/foods/September2019/qiex9z1po0AbZv5PDIhd.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>Iced Milo</h3>" +
+                                "<h6>Rp. 10.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyIC' type='number' min='0' placeholder='qty' value='" + qtyI + "'>" +
+                        "<button onClick='changeBtnI()' id='changeBtnI' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyI").remove();
+                $("#cartBtnI").remove();
+                $("#qtyI").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnJ").on("click", function() {
+                qtyJ = $("#qtyJ").val();
+                total = total + (qtyJ * 11000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://nos.jkt-1.neo.id/mcdonalds/foods/October2022/bcp2nCLBZXHCLkf81S2q.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>McFlurry</h3>" +
+                                "<h6>Rp. 11.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyJC' type='number' min='0' placeholder='qty' value='" + qtyJ + "'>" +
+                        "<button onClick='changeBtnJ()' id='changeBtnJ' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyJ").remove();
+                $("#cartBtnJ").remove();
+                $("#qtyJ").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#cartBtnK").on("click", function() {
+                qtyK = $("#qtyK").val();
+                total = total + (qtyK * 20000);
+                $(".cart").append(
+                    "<div class='boxOrder'>" +
+                        "<div id='menuIm'>" +
+                            "<img id='burger' src='https://www.mcdonalds.co.za/media/products/iced-coffee/Group-2-4.png'>" +
+                        "</div>" +
+                        "<div id='action'>" +
+                            "<div class='desc'>" +
+                                "<h3>Iced Coffee</h3>" +
+                                "<h6>Rp. 20.000</h6>" +
+                            "</div>" +
+                        "<input id='qtyKC' type='number' min='0' placeholder='qty' value='" + qtyK + "'>" +
+                        "<button onClick='changeBtnK()' id='changeBtnK' class='btn btn-light'> <img id='addCart' src='https://icons.veryicon.com/png/o/miscellaneous/icon-8/another-change-4.png' alt='change_qty'> </button>" +
+                        "</div>" +
+                    "</div>"
+                )
+                $("#qtyK").remove();
+                $("#cartBtnK").remove();
+                $("#qtyK").val("");
+                $("#totalPrice").html("Total : Rp. " + String(total));
+            })
+            $("#place").on("click", function() {
+                qtyA = 0;
+                qtyB = 0;
+                qtyC = 0;
+                qtyD = 0;
+                qtyE = 0;
+                qtyF = 0;
+                qtyG = 0;
+                qtyH = 0;
+                qtyI = 0;
+                qtyJ = 0;
+                qtyK = 0;
+                total = 0;
+                $(".boxOrder").remove();
+                $("#totalPrice").html("Total : Rp. 0");
+                window.location.reload();
+            })
+        })
+    </script>
+  </head>
+
+  <body>
+    <div class="logoTitle">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/McDonald%27s_Golden_Arches.svg/2339px-McDonald%27s_Golden_Arches.svg.png" alt="restaurant_logo" width="20% ">
+        <h1 id="welcome">Welcome To McDonald's!</h1>
+    </div>
+    
+    <div class="menu">
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://images.tokopedia.net/img/JFrBQq/2022/8/30/83e544e8-8229-4e0b-91db-618123c8f6f3.jpg" alt="BigMac">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>Big Mac</h3>
+                    <h6>Rp. 50.000</h6>
+                </div>
+                <input id="qtyA" type="number" min="0" placeholder="qty">
+                <button id="cartBtnA" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://nos.jkt-1.neo.id/mcdonalds/foods/September2023/Iq1HcIA50W5kyR36Tv34.png" alt="ChickenBurger">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>Chicken Burger</h3>
+                    <h6>Rp. 30.000</h6>
+                </div>
+                <input id="qtyB" type="number" min="0" placeholder="qty">  
+                <button id="cartBtnB" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://nos.jkt-1.neo.id/mcdonalds/foods/September2023/WlNlna8nt5YHgJDcpfmy.png" alt="FishBurger">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>Fish O'Fillet</h3>
+                    <h6>Rp. 35.000</h6>
+                </div>
+                <input id="qtyC" type="number" min="0" placeholder="qty">
+                <button id="cartBtnC" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://nos.jkt-1.neo.id/mcdonalds/foods/October2019/N6lms2s2I8EeH6Iq4uAi.png" alt="Fries">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>French Fries</h3>
+                    <h6>Rp. 20.000</h6>
+                </div>
+                <input id="qtyD" type="number" min="0" placeholder="qty">
+                <button id="cartBtnD" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://mcdonalds.com.pk/wp-content/uploads/2022/08/014-2pcs-BIC.png" alt="CrispyChicken">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>Crispy Chicken</h3>
+                    <h6>Rp. 15.000</h6>
+                </div>
+                <input id="qtyE" type="number" min="0" placeholder="qty">
+                <button id="cartBtnE" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://www.nicepng.com/png/detail/70-707969_chicken-nuggets.png" alt="Nuggets">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>McNuggets</h3>
+                    <h6>Rp. 45.000</h6>
+                </div>
+                <input id="qtyF" type="number" min="0" placeholder="qty">
+                <button id="cartBtnF" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://nos.jkt-1.neo.id/mcdonalds/foods/August2019/6VJ2ueCTa01TMyXxBfVo.png" alt="Porridge">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>McD Porridge</h3>
+                    <h6>Rp. 15.000</h6>
+                </div>
+                <input id="qtyG" type="number" min="0" placeholder="qty">
+                <button id="cartBtnG" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://nos.jkt-1.neo.id/mcdonalds/foods/November2020/cEBOioihY1Ps4oMcC8cq.png" alt="HappyMeal">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>Happy Meal</h3>
+                    <h6>Rp. 30.000</h6>
+                </div>
+                <input id="qtyH" type="number" min="0" placeholder="qty">
+                <button id="cartBtnH" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://nos.jkt-1.neo.id/mcdonalds/foods/September2019/qiex9z1po0AbZv5PDIhd.png" alt="IcedMilo">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>Iced Milo</h3>
+                    <h6>Rp. 10.000</h6>
+                </div>
+                <input id="qtyI" type="number" min="0" placeholder="qty">
+                <button id="cartBtnI" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://nos.jkt-1.neo.id/mcdonalds/foods/October2022/bcp2nCLBZXHCLkf81S2q.png" alt="IceCream">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>McFlurry</h3>
+                    <h6>Rp. 11.000</h6>
+                </div>
+                <input id="qtyJ" type="number" min="0" placeholder="qty">
+                <button id="cartBtnJ" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+
+        <div class="box">
+            <div id="menuImg">
+                <img id="burger" src="https://www.mcdonalds.co.za/media/products/iced-coffee/Group-2-4.png" alt="IceCoffee">
+            </div>
+            <div id="action">
+                <div class="desc">
+                    <h3>Iced Coffee</h3>
+                    <h6>Rp. 20.000</h6>
+                </div>
+                <input id="qtyK" type="number" min="0" placeholder="qty">
+                <button id="cartBtnK" class="btn btn-light"> <img id="addCart" src="https://cdn-icons-png.flaticon.com/512/70/70021.png" alt="Add_to_cart"> </button>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="checkout">
+        <h2>Your Order</h2>
+        <div class="cart"></div>
+    </div>
+    <h4 id="totalPrice">Total : Rp. 0</h4>
+    <button id="place" class="btn btn-warning">Place Order</button>
+  </body>
+</html>

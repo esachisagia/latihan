@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+<body>
+    <style>
+    .topnav {
+        overflow: hidden;
+        background-color: #333;
+    }
+    .topnav-right {
+        float: right;
+    }
+    .btn-primary {
+            background-color: #4caf50;
+            border-color: #4caf50;
+            transition: transform 0.3s ease;
+        }
+
+    .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+    .note-card.pointer-cursor:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        /* delete button styling */
+    .delete-button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border: none;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Added transition for background color */
+        }
+    </style>  
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid topnav">
+          <a class="navbar-brand" href="#homePage">TEKNOLOGI WEBSITE</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse topnav-right" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#porto">PORTOFOLIO</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">CONTACT</a>
+                    </li>  
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <section id="homePage" class="bg-info p-5">
+        <div class="row">
+            <img src="gambarHomePage-removebg-preview.png" style="width: 100px; height: 50%; margin-left: auto; margin-right: auto" alt="">
+        </div>
+        <div class="row">
+            <span class="display-6 text-white text-center fw-bold">UTS TEKNOLOGI WEBSITE</span>
+        </div>
+        <div class="row m-3">
+            <span class="text-white text-center fw-bold">-----<i class="bi bi-star-fill"></i>-----</span>
+        </div>
+        <div class="row">
+            <span class="text-white text-center">HTML - BOOTSTRAP - JAVASCRIPT</span>
+        </div>
+    </section>
+    <section id="porto" class="p-5">
+        <div class="row">
+            <span class="display-6 text-black text-center fw-bold">PORTOFOLIO</span>
+        </div>
+        <div class="row m-3">
+            <span class="text-black text-center fw-bold">-----<i class="bi bi-star-fill"></i>-----</span>
+        </div>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <img src="logCabin.jpeg" alt="">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card">
+                        <img src="sliceOfCake.jpeg" alt="">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card">
+                        <img src="circusTent.png" style="width: 50px; height: 225px" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col-sm">
+                    <div class="card">
+                        <img src="gamepad.png" alt="">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card">
+                        <img src="vault.jpeg" alt="">
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <div class="card">
+                        <img src="submarine.jpeg" style="width: 50px; height: 225px" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="bg-info p-5">
+        <div class="row">
+            <span class="display-6 text-white fw-bold text-center">ABOUT</span>
+        </div>
+        <div class="row m-3">
+            <span class="text-white text-center fw-bold">-----<i class="bi bi-star-fill"></i>-----</span>
+        </div>
+        <div class="row">
+            <div class="col-sm text-white">
+                Web technology refers to the various tools and
+                techniques that are utilized in the process of
+                communication between different types of devices
+                over the Internet. A web browser is used to access 
+                web pages.
+            </div>
+            <div class="col-sm text-white">
+                Web browser can be defined as programs that displays
+                text, data, pictures, animation and video on the Internet.
+                Hyperlinked resources on the World Wide Web can be accessed
+                using software interfaces provided by Web browsers.
+            </div>
+        </div>
+    </section>
+    <section id="contact" class="mt-3 p-5 bg-white">
+        <div class="row">
+            <div class="display-6 text-black fw-bold text-center">
+                CONTACT ME
+            </div>
+        </div>
+        <div class="row m-3">
+            <span class="text-black text-center fw-bold">-----<i class="bi bi-star-fill"></i>-----</span>
+        </div>
+        <div class="row">
+            <div class="container mt-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addNoteModal">
+                    CONTACT!
+                </button>        
+                <div id="notes-container" class="mt-3 row">
+                </div>
+            </div>
+        
+            <!-- add modal -->
+            <div class="modal fade" id="addNoteModal" tabindex="-1" role="dialog" aria-labelledby="addNoteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title">Contact !</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="note-title">Title</label>
+                                    <input type="text" class="form-control" id="note-title" placeholder="Message Title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="note-content">Notes</label>
+                                    <textarea class="form-control" id="note-content" placeholder="Message Notes"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="note-color">Color</label>
+                                    <select class="form-control" id="note-color">
+                                        <option value="#ffffff">White</option>
+                                        <option value="#007bff">Blue</option>
+                                        <option value="#6c757d">Gray</option>
+                                        <option value="#dc3545">Red</option>
+                                        <option value="#ffc107">Yellow</option>
+                                        <option value="#28a745">Green</option>
+                                        <option value="#17a2b8">Cyan</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="addNoteBtn"><i class="bi bi-plus-circle-fill"></i> Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- edit modal -->
+            <div class="modal fade" id="editNoteModal" tabindex="-1" role="dialog" aria-labelledby="editNoteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header bg-success text-white">
+                            <h5 class="modal-title">Edit Contact</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="edit-note-title">Title</label>
+                                    <input type="text" class="form-control" id="edit-note-title" placeholder="Notes Title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-note-content">Notes</label>
+                                    <textarea class="form-control" id="edit-note-content" placeholder="Text Notes"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="edit-note-color">Color</label>
+                                    <select class="form-control" id="edit-note-color">
+                                        <option value="#ffffff">White</option>
+                                        <option value="#007bff">Blue</option>
+                                        <option value="#6c757d">Gray</option>
+                                        <option value="#dc3545">Red</option>
+                                        <option value="#ffc107">Yellow</option>
+                                        <option value="#28a745">Green</option>
+                                        <option value="#17a2b8">Cyan</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success" id="editNoteBtn"><i class="bi bi-pencil-fill"></i> Edit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="bg-black m-3 p-5">
+        <div class="row">
+            <div class="col-sm">
+                <span class="m-5 fw-bold text-white text-center">LOCATION</span>
+            </div>
+            <div class="col-sm">
+                <span class="m-3 fw-bold text-white text-center">AROUND THE WEB</span>
+            </div>
+            <div class="col-sm">
+                <span class="m-1 fw-bold text-white text-center">ABOUT WEB TECHNOLOGY</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <span class="text-white text-center">Petra Christian University 
+                    Jl. Siwalankerto No.121-131, Siwalankerto, Kec. Wonocolo, Surabaya,
+                    Jawa Timur 60236
+                </span>
+            </div>
+            <div class="col-sm">
+                <span class="text-white text-center p-5"><i class="bi bi-facebook"></i> <i class="bi bi-twitter"> <i class="bi bi-linkedin"></i></i></span>
+            </div>
+            <div class="col-sm">
+                <span class="text-white text-center">The open Web presents incredible
+                    opportunities for developers. To take full advantage of these technologies,
+                    you need to know how to use them. Here you'll find links to our <a style="color:cyan;"href="">Web technology</a> documentation
+                </span>
+            </div>
+        </div>
+    </section>
+    </div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>            
+            <script>
+                let notes = [];
+        
+                function renderNotes() {
+                    const notesContainer = document.getElementById('notes-container');
+                    notesContainer.innerHTML = '';
+        
+                    notes.forEach((note, index) => {
+                        const card = `
+                            <div class="col-lg-4 col-md-6 col-sm-12 mb-3">
+                                <div class="card note-card pointer-cursor" data-index="${index}" style="background-color: ${note.color}">
+                                    <div class="card-header">
+                                        <h5 class="card-title">${note.title}</h5>
+                                        <button class="delete-button" onclick="deleteNote(${index}, event)" style="background-color: ${note.color}">X</button>
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text">${note.content}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        notesContainer.innerHTML += card;
+                    });
+                }
+        
+                $('#addNoteBtn').click(function () {
+                    const title = $('#note-title').val();
+                    const content = $('#note-content').val();
+                    const color = $('#note-color').val();
+        
+                    if (title.trim() === '' || content.trim() === '') {
+                        alert('Title and content are required.');
+                        return;
+                    }
+        
+                    const note = { title, content, color };
+                    notes.push(note);
+                    $('#addNoteModal').modal('hide');
+                    renderNotes();
+                });
+        
+                $(document).on('click', '.note-card', function () {
+                    const index = $(this).data('index');
+                    $('#edit-note-title').val(notes[index].title);
+                    $('#edit-note-content').val(notes[index].content);
+                    $('#edit-note-color').val(notes[index].color);
+                    $('#editNoteModal').modal('show');
+        
+                    $('#editNoteBtn').off('click').on('click', function () {
+                        const updatedTitle = $('#edit-note-title').val();
+                        const updatedContent = $('#edit-note-content').val();
+                        const updatedColor = $('#edit-note-color').val();
+        
+                        if (updatedTitle.trim() === '' || updatedContent.trim() === '') {
+                            alert('Title and content are required.');
+                            return;
+                        }
+        
+                        notes[index].title = updatedTitle;
+                        notes[index].content = updatedContent;
+                        notes[index].color = updatedColor;
+                        $('#editNoteModal').modal('hide');
+                        renderNotes();
+                    });
+                });
+        
+                function deleteNote(index, event) {
+                    event.stopPropagation();
+                    notes.splice(index, 1);
+                    renderNotes();
+                }
+        
+                renderNotes();
+            </script>
